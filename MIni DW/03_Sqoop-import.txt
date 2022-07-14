@@ -9,11 +9,11 @@ sqoop import --connect jdbc:mysql://ra_mysql:3306/testdb --username root \
 
 sqoop import --connect jdbc:mysql://ra_mysql:3306/testdb --username root \
 --target-dir /input/v_stores/ \
---query 'SELECT CustomerID,Name,SalesPersonID,Demographics,TerritoryID,SalesQuota,CommissionPct,SalesYTD,SalesLastYear,ModifiedDate from v_stores WHERE $CONDITIONS' --split-by CustomerID --password example
+--query 'SELECT CustomerID,Name,SalesPersonID,Demographics,TerritoryID,SalesQuota,CommissionPct,SalesYTD,SalesLastYear,ModifiedDate from v_stores WHERE $CONDITIONS' --split-by CustomerID --password ''
 
 sqoop import --connect jdbc:mysql://ra_mysql:3306/testdb --username root \
 --target-dir /input/v_customer/ \
---query 'SELECT CustomerID, AccountNumber, CustomerType, Demographics, TerritoryID, ModifiedDate FROM v_customer WHERE $CONDITIONS' --split-by CustomerID --password example
+--query 'SELECT CustomerID, AccountNumber, CustomerType, Demographics, TerritoryID, ModifiedDate FROM v_customer WHERE $CONDITIONS' --split-by CustomerID --password ''
 
 sqoop import --connect jdbc:mysql://ra_mysql:3306/testdb --username root --password example --query 'SELECT CreditCardID, CardType, CardNumber, ExpMonth, ExpYear, ModifiedDate FROM ccard WHERE $CONDITIONS' --split-by CreditCardID --target-dir /input/creditcard/ 
 
